@@ -828,12 +828,7 @@ class InkEditor extends AnnotationEditor {
       // This editor was created in using copy (ctrl+c).
       const [parentWidth, parentHeight] = this.parentDimensions;
       this.setAspectRatio(this.width * parentWidth, this.height * parentHeight);
-      this.setAt(
-        baseX * parentWidth,
-        baseY * parentHeight,
-        this.width * parentWidth,
-        this.height * parentHeight
-      );
+      this.setAt(baseX, baseY, this.width, this.height);
       this.#isCanvasInitialized = true;
       this.#setCanvasDims();
       this.setDims(this.width * parentWidth, this.height * parentHeight);

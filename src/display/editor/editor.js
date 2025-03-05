@@ -443,11 +443,8 @@ class AnnotationEditor {
    * @param {number} ty - y-translation in screen coordinates.
    */
   setAt(x, y, tx, ty) {
-    const [width, height] = this.parentDimensions;
-    [tx, ty] = this.screenToPageTranslation(tx, ty);
-
-    this.x = (x + tx) / width;
-    this.y = (y + ty) / height;
+    this.x = x;
+    this.y = y;
 
     this.fixAndSetPosition();
   }

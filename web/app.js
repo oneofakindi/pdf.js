@@ -762,6 +762,7 @@ const PDFViewerApplication = {
     if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       this.handleLoading(true);
       const data = await window.loadData();
+      this.handleLoading(false);
       if (data) {
         this.open({ data });
       } else {
@@ -963,19 +964,20 @@ const PDFViewerApplication = {
     if (!this.pdfLoadingTask) {
       return;
     }
-    if (
-      (typeof PDFJSDev === "undefined" ||
-        PDFJSDev.test("GENERIC && !TESTING")) &&
-      this.pdfDocument?.annotationStorage.size > 0 &&
-      this._annotationStorageModified
-    ) {
-      try {
-        // Trigger saving, to prevent data loss in forms; see issue 12257.
-        await this.save();
-      } catch {
-        // Ignoring errors, to ensure that document closing won't break.
-      }
-    }
+    // 注释 切换文档触发下载
+    // if (
+    //   (typeof PDFJSDev === "undefined" ||
+    //     PDFJSDev.test("GENERIC && !TESTING")) &&
+    //   this.pdfDocument?.annotationStorage.size > 0 &&
+    //   this._annotationStorageModified
+    // ) {
+    //   try {
+    //     // Trigger saving, to prevent data loss in forms; see issue 12257.
+    //     await this.save();
+    //   } catch {
+    //     // Ignoring errors, to ensure that document closing won't break.
+    //   }
+    // }
     const promises = [];
 
     promises.push(this.pdfLoadingTask.destroy());
@@ -1872,9 +1874,9 @@ const PDFViewerApplication = {
   },
 
   bindEvents() {
-    if (this._eventBusAbortController) {
-      return;
-    }
+    // if (this._eventBusAbortController) {
+    //   return;
+    // }
     this._eventBusAbortController = new AbortController();
 
     const {

@@ -298,14 +298,6 @@ class FreeTextEditor extends AnnotationEditor {
   }
 
   /** @inheritdoc */
-  getInitialTranslation() {
-    // The start of the base line is where the user clicked.
-    const scale = this.parentScale;
-    return [
-      -FreeTextEditor._internalPadding * scale,
-      -(FreeTextEditor._internalPadding + this.#fontSize) * scale,
-    ];
-  }
 
   /** @inheritdoc */
   rebuild() {

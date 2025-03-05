@@ -158,6 +158,10 @@ const initCustom = () => {
     manager.hook.postDestroy = postDestroy;
     manager.hook.postInitialize = postInitialize;
 
+    // 清空旧数据
+    if (window.editorManager) {
+      window.editorManager.map = new Map();
+    }
     const params = await window.initAnnotation();
     // 保存到editorManager里面去
     editorManager.initEditorParameters(params, manager);

@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import { RenderingStates, ScrollMode, SpreadMode } from "./ui_utils.js";
+import { PDFViewerApplication } from "./app.js";
 import { AppOptions } from "./app_options.js";
 import { LinkTarget } from "./pdf_link_service.js";
-import { PDFViewerApplication } from "./app.js";
+import { RenderingStates, ScrollMode, SpreadMode } from "./ui_utils.js";
 
 /* eslint-disable-next-line no-unused-vars */
 const pdfjsVersion =
@@ -259,14 +259,7 @@ function webViewerLoad() {
 // works in Firefox; see https://bugzilla.mozilla.org/show_bug.cgi?id=1618553
 document.blockUnblockOnload?.(true);
 
-if (
-  document.readyState === "interactive" ||
-  document.readyState === "complete"
-) {
-  webViewerLoad();
-} else {
-  document.addEventListener("DOMContentLoaded", webViewerLoad, true);
-}
+document.addEventListener("DOMContentLoaded", webViewerLoad, true);
 
 export {
   PDFViewerApplication,
