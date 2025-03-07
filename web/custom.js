@@ -92,7 +92,6 @@ class EditorManager {
   }
 
   removeEditorParameters(editor) {
-    console.log(editor);
     let params;
     if (!editor || !editor.id || !(params = this.map.get(editor.id))) {
       return null;
