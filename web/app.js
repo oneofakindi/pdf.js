@@ -779,7 +779,9 @@ const PDFViewerApplication = {
 
   handleLoading(show) {
     const loading = document.querySelector(".loading-main");
-    loading.style.display = show ? "flex" : "none";
+    if (loading) {
+      loading.style.display = show ? "flex" : "none";
+    }
   },
 
   get externalServices() {
