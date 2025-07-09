@@ -392,10 +392,7 @@ class AnnotationEditorLayer {
 
   disableTextSelection() {
     this.div.tabIndex = 0;
-    if (this.#textLayer?.div && this.#textSelectionAC) {
-      this.#textSelectionAC.abort();
-      this.#textSelectionAC = null;
-
+    if (this.#textLayer?.div) {
       this.#textLayer.div.classList.remove("highlighting");
     }
   }
@@ -646,7 +643,7 @@ class AnnotationEditorLayer {
     if (retVal) {
       this.#uiManager.hook.postConstruct(retVal);
     }
-    return editorType ? new editorType.prototype.constructor(params) : null;
+    return retVal;
   }
 
   canCreateNewEmptyEditor() {

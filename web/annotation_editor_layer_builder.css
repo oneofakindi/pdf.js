@@ -1209,7 +1209,7 @@
               }
 
               &[aria-selected="true"] > .swatch {
-                outline: 2px solid var(--selected-outline-color);
+                outline: 2px solid var(--selected-outline-color) !important;
               }
 
               &:is(:hover, :active, :focus-visible) > .swatch {
@@ -1266,7 +1266,7 @@
         }
 
         &[aria-selected="true"] > .swatch {
-          outline: 2px solid var(--selected-outline-color);
+          outline: 2px solid var(--selected-outline-color) !important;
         }
 
         &:is(:hover, :active, :focus-visible) > .swatch {
